@@ -1,5 +1,5 @@
-const havaDurumu = document.querySelector('.havaDurumu'); // Class name corrected
-const sehir = document.querySelector('#sehir'); // Corrected selector to match id
+const havaDurumu = document.querySelector('.havaDurumu'); 
+const sehir = document.querySelector('#sehir'); 
 const card = document.querySelector('.card');
 const apiKey = '90ff7e6929d5e5fcac974848169a3c2f';
 
@@ -11,7 +11,7 @@ havaDurumu.addEventListener('submit', async event => {
     if(city) {
         try {
             const weatherData = await getWeatherData(city);
-            displayWeatherInfo(weatherData); // Fixed function name typo
+            displayWeatherInfo(weatherData);
         } catch (error) {
             console.error(error);
             displayError(error.message);
@@ -32,7 +32,7 @@ async function getWeatherData(city){
     return await response.json();
 }
 
-function displayWeatherInfo(data){ // Fixed function name typo
+function displayWeatherInfo(data){ 
     const {name: city,
            main: {temp, humidity},
            weather: [{description, id}]
@@ -47,7 +47,7 @@ function displayWeatherInfo(data){ // Fixed function name typo
     const weatherDisplay = document.createElement('p');
 
     cityDisplay.textContent = city;
-    tempDisplay.textContent = `Sıcaklık: ${(temp - 273.15).toFixed(2)}°C`; // Kelvin to Celsius
+    tempDisplay.textContent = `Sıcaklık: ${(temp - 273.15).toFixed(2)}°C`; 
     humidityDisplay.textContent = `Nem: ${humidity}%`;
     descDisplay.textContent = description;
     weatherDisplay.textContent = getWeatherEmoji(id);
